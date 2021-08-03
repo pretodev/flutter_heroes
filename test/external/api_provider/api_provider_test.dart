@@ -19,7 +19,7 @@ void main() {
             requestOptions: requestOptions,
           ));
       final api = ApiProvider(client: client);
-      expect(await api.all, isA<List<Hero>>());
+      expect(await api.all, isA<List<HeroEntity>>());
     });
   });
 }

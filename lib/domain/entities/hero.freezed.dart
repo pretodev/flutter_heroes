@@ -13,8 +13,8 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$HeroTearOff {
-  const _$HeroTearOff();
+class _$HeroEntityTearOff {
+  const _$HeroEntityTearOff();
 
   _Hero call({required int id, required String name}) {
     return _Hero(
@@ -25,31 +25,33 @@ class _$HeroTearOff {
 }
 
 /// @nodoc
-const $Hero = _$HeroTearOff();
+const $HeroEntity = _$HeroEntityTearOff();
 
 /// @nodoc
-mixin _$Hero {
+mixin _$HeroEntity {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $HeroCopyWith<Hero> get copyWith => throw _privateConstructorUsedError;
+  $HeroEntityCopyWith<HeroEntity> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $HeroCopyWith<$Res> {
-  factory $HeroCopyWith(Hero value, $Res Function(Hero) then) =
-      _$HeroCopyWithImpl<$Res>;
+abstract class $HeroEntityCopyWith<$Res> {
+  factory $HeroEntityCopyWith(
+          HeroEntity value, $Res Function(HeroEntity) then) =
+      _$HeroEntityCopyWithImpl<$Res>;
   $Res call({int id, String name});
 }
 
 /// @nodoc
-class _$HeroCopyWithImpl<$Res> implements $HeroCopyWith<$Res> {
-  _$HeroCopyWithImpl(this._value, this._then);
+class _$HeroEntityCopyWithImpl<$Res> implements $HeroEntityCopyWith<$Res> {
+  _$HeroEntityCopyWithImpl(this._value, this._then);
 
-  final Hero _value;
+  final HeroEntity _value;
   // ignore: unused_field
-  final $Res Function(Hero) _then;
+  final $Res Function(HeroEntity) _then;
 
   @override
   $Res call({
@@ -70,7 +72,7 @@ class _$HeroCopyWithImpl<$Res> implements $HeroCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$HeroCopyWith<$Res> implements $HeroCopyWith<$Res> {
+abstract class _$HeroCopyWith<$Res> implements $HeroEntityCopyWith<$Res> {
   factory _$HeroCopyWith(_Hero value, $Res Function(_Hero) then) =
       __$HeroCopyWithImpl<$Res>;
   @override
@@ -78,7 +80,7 @@ abstract class _$HeroCopyWith<$Res> implements $HeroCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$HeroCopyWithImpl<$Res> extends _$HeroCopyWithImpl<$Res>
+class __$HeroCopyWithImpl<$Res> extends _$HeroEntityCopyWithImpl<$Res>
     implements _$HeroCopyWith<$Res> {
   __$HeroCopyWithImpl(_Hero _value, $Res Function(_Hero) _then)
       : super(_value, (v) => _then(v as _Hero));
@@ -116,7 +118,7 @@ class _$_Hero extends _Hero {
 
   @override
   String toString() {
-    return 'Hero(id: $id, name: $name)';
+    return 'HeroEntity(id: $id, name: $name)';
   }
 
   @override
@@ -141,7 +143,7 @@ class _$_Hero extends _Hero {
       __$HeroCopyWithImpl<_Hero>(this, _$identity);
 }
 
-abstract class _Hero extends Hero {
+abstract class _Hero extends HeroEntity {
   const factory _Hero({required int id, required String name}) = _$_Hero;
   const _Hero._() : super._();
 

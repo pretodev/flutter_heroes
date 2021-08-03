@@ -10,7 +10,7 @@ class HeroRepository extends HeroRepositoryInterface {
       : _apiProvider = apiProvider;
 
   @override
-  TaskEither<Exception, List<Hero>> all() {
+  TaskEither<Exception, List<HeroEntity>> all() {
     return TaskEither(() async {
       return Either.right(await _apiProvider.all);
     });

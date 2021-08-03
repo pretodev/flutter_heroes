@@ -15,6 +15,6 @@ void main() {
     final getHeroes = GetHeroes(heroRepository: heroRepository);
     final result = await getHeroes().run();
     expect(result.isRight(), true);
-    expect(result.fold(id, id), isA<List<Hero>>());
+    expect(result.fold(id, id), isA<List<HeroEntity>>());
   });
 }

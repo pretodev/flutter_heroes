@@ -8,7 +8,7 @@ class GetHeroes {
   GetHeroes({required HeroRepositoryInterface heroRepository})
       : _heroRepository = heroRepository;
 
-  TaskEither<Exception, List<Hero>> call() {
+  TaskEither<Exception, List<HeroEntity>> call() {
     return _heroRepository.all();
   }
 }

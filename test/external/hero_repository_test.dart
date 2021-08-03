@@ -9,12 +9,12 @@ class MockApiProvider extends Mock implements ApiProvider {}
 
 void main() {
   group('Hero Repository', () {
-    final heroes = <Hero>[
-      Hero(id: 1, name: 'hero1'),
-      Hero(id: 2, name: 'hero2'),
-      Hero(id: 3, name: 'hero3'),
-      Hero(id: 4, name: 'hero4'),
-      Hero(id: 5, name: 'hero5'),
+    final heroes = <HeroEntity>[
+      HeroEntity(id: 1, name: 'hero1'),
+      HeroEntity(id: 2, name: 'hero2'),
+      HeroEntity(id: 3, name: 'hero3'),
+      HeroEntity(id: 4, name: 'hero4'),
+      HeroEntity(id: 5, name: 'hero5'),
     ];
 
     test('should return all heroes', () async {
@@ -24,7 +24,7 @@ void main() {
       when(() => apiProvider.all).thenAnswer((_) async => heroes);
 
       final result = await heroRepository.all().run();
-      List<Hero> allHeroes = result.fold((_) => [], id);
+      List<HeroEntity> allHeroes = result.fold((_) => [], id);
 
       expect(allHeroes.length, 5);
     });
