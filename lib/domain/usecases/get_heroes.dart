@@ -1,11 +1,11 @@
 import 'package:fpdart/fpdart.dart';
-import 'package:heroes/domain/adapters/repositories/hero_repository.dart';
+import 'package:heroes/domain/adapters/repositories/hero_repository_interface.dart';
 import 'package:heroes/domain/entities/hero.dart';
 
 class GetHeroes {
-  final HeroRepository _heroRepository;
+  final HeroRepositoryInterface _heroRepository;
 
-  GetHeroes({required HeroRepository heroRepository})
+  GetHeroes({required HeroRepositoryInterface heroRepository})
       : _heroRepository = heroRepository;
 
   TaskEither<Exception, List<Hero>> call() {

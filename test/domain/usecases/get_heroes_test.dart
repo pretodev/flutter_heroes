@@ -1,11 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fpdart/fpdart.dart';
-import 'package:heroes/domain/adapters/repositories/hero_repository.dart';
+import 'package:heroes/domain/adapters/repositories/hero_repository_interface.dart';
 import 'package:heroes/domain/entities/hero.dart';
 import 'package:heroes/domain/usecases/get_heroes.dart';
 import 'package:mocktail/mocktail.dart';
 
-class MockHeroRepository extends Mock implements HeroRepository {}
+class MockHeroRepository extends Mock implements HeroRepositoryInterface {}
 
 void main() {
   final heroRepository = MockHeroRepository();
