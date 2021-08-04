@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fpdart/fpdart.dart';
+import 'package:heroes/domain/entities/alignment.dart';
 import 'package:heroes/domain/entities/gender.dart';
 import 'package:heroes/domain/entities/hero.dart';
 import 'package:heroes/domain/usecases/get_heroes.dart';
@@ -12,12 +13,42 @@ class MockApiProvider extends Mock implements ApiProvider {}
 void main() {
   group('Hero Repository', () {
     final heroes = <HeroEntity>[
-      HeroEntity(id: 1, name: 'hero1', gender: Gender.female()),
-      HeroEntity(id: 2, name: 'hero2', gender: Gender.male()),
-      HeroEntity(id: 3, name: 'hero3', gender: Gender.male()),
-      HeroEntity(id: 4, name: 'hero4', gender: Gender.nonBinary()),
-      HeroEntity(id: 5, name: 'hero5', gender: Gender.female()),
-      HeroEntity(id: 6, name: 'hero6', gender: Gender.female()),
+      HeroEntity(
+        id: 1,
+        name: 'hero1',
+        gender: Gender.female(),
+        alignment: HeroAlignment.bad(),
+      ),
+      HeroEntity(
+        id: 2,
+        name: 'hero2',
+        gender: Gender.male(),
+        alignment: HeroAlignment.neutral(),
+      ),
+      HeroEntity(
+        id: 3,
+        name: 'hero3',
+        gender: Gender.male(),
+        alignment: HeroAlignment.bad(),
+      ),
+      HeroEntity(
+        id: 4,
+        name: 'hero4',
+        gender: Gender.nonBinary(),
+        alignment: HeroAlignment.good(),
+      ),
+      HeroEntity(
+        id: 5,
+        name: 'hero5',
+        gender: Gender.female(),
+        alignment: HeroAlignment.bad(),
+      ),
+      HeroEntity(
+        id: 6,
+        name: 'hero6',
+        gender: Gender.female(),
+        alignment: HeroAlignment.neutral(),
+      ),
     ];
 
     late ApiProvider apiProvider;

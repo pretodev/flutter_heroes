@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:heroes/domain/entities/alignment.dart';
 import 'package:heroes/domain/entities/gender.dart';
 
 part 'hero.freezed.dart';
@@ -11,5 +12,6 @@ class HeroEntity with _$HeroEntity {
     required int id,
     required String name,
     required Gender gender,
+    required HeroAlignment alignment,
   }) = _Hero;
 }

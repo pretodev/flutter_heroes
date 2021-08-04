@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:heroes/domain/entities/alignment.dart';
 import 'package:heroes/domain/entities/gender.dart';
 import 'package:heroes/domain/entities/hero.dart';
 
@@ -17,10 +18,17 @@ class ApiProvider {
             : genderMap == 'Female'
                 ? Gender.female()
                 : Gender.nonBinary();
+        final alignmentMap = map['biography']['alignment'];
+        final alignment = alignmentMap == 'good'
+            ? HeroAlignment.good()
+            : alignmentMap == 'bad'
+                ? HeroAlignment.bad()
+                : HeroAlignment.neutral();
         return HeroEntity(
           id: map['id'],
           name: map['name'],
           gender: gender,
+          alignment: alignment,
         );
       },
     ).toList();

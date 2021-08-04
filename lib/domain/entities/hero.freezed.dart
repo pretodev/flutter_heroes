@@ -16,11 +16,16 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$HeroEntityTearOff {
   const _$HeroEntityTearOff();
 
-  _Hero call({required int id, required String name, required Gender gender}) {
+  _Hero call(
+      {required int id,
+      required String name,
+      required Gender gender,
+      required HeroAlignment alignment}) {
     return _Hero(
       id: id,
       name: name,
       gender: gender,
+      alignment: alignment,
     );
   }
 }
@@ -33,6 +38,7 @@ mixin _$HeroEntity {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   Gender get gender => throw _privateConstructorUsedError;
+  HeroAlignment get alignment => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HeroEntityCopyWith<HeroEntity> get copyWith =>
@@ -44,9 +50,10 @@ abstract class $HeroEntityCopyWith<$Res> {
   factory $HeroEntityCopyWith(
           HeroEntity value, $Res Function(HeroEntity) then) =
       _$HeroEntityCopyWithImpl<$Res>;
-  $Res call({int id, String name, Gender gender});
+  $Res call({int id, String name, Gender gender, HeroAlignment alignment});
 
   $GenderCopyWith<$Res> get gender;
+  $HeroAlignmentCopyWith<$Res> get alignment;
 }
 
 /// @nodoc
@@ -62,6 +69,7 @@ class _$HeroEntityCopyWithImpl<$Res> implements $HeroEntityCopyWith<$Res> {
     Object? id = freezed,
     Object? name = freezed,
     Object? gender = freezed,
+    Object? alignment = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -76,6 +84,10 @@ class _$HeroEntityCopyWithImpl<$Res> implements $HeroEntityCopyWith<$Res> {
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as Gender,
+      alignment: alignment == freezed
+          ? _value.alignment
+          : alignment // ignore: cast_nullable_to_non_nullable
+              as HeroAlignment,
     ));
   }
 
@@ -85,6 +97,13 @@ class _$HeroEntityCopyWithImpl<$Res> implements $HeroEntityCopyWith<$Res> {
       return _then(_value.copyWith(gender: value));
     });
   }
+
+  @override
+  $HeroAlignmentCopyWith<$Res> get alignment {
+    return $HeroAlignmentCopyWith<$Res>(_value.alignment, (value) {
+      return _then(_value.copyWith(alignment: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -92,10 +111,12 @@ abstract class _$HeroCopyWith<$Res> implements $HeroEntityCopyWith<$Res> {
   factory _$HeroCopyWith(_Hero value, $Res Function(_Hero) then) =
       __$HeroCopyWithImpl<$Res>;
   @override
-  $Res call({int id, String name, Gender gender});
+  $Res call({int id, String name, Gender gender, HeroAlignment alignment});
 
   @override
   $GenderCopyWith<$Res> get gender;
+  @override
+  $HeroAlignmentCopyWith<$Res> get alignment;
 }
 
 /// @nodoc
@@ -112,6 +133,7 @@ class __$HeroCopyWithImpl<$Res> extends _$HeroEntityCopyWithImpl<$Res>
     Object? id = freezed,
     Object? name = freezed,
     Object? gender = freezed,
+    Object? alignment = freezed,
   }) {
     return _then(_Hero(
       id: id == freezed
@@ -126,6 +148,10 @@ class __$HeroCopyWithImpl<$Res> extends _$HeroEntityCopyWithImpl<$Res>
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as Gender,
+      alignment: alignment == freezed
+          ? _value.alignment
+          : alignment // ignore: cast_nullable_to_non_nullable
+              as HeroAlignment,
     ));
   }
 }
@@ -133,7 +159,11 @@ class __$HeroCopyWithImpl<$Res> extends _$HeroEntityCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Hero extends _Hero {
-  const _$_Hero({required this.id, required this.name, required this.gender})
+  const _$_Hero(
+      {required this.id,
+      required this.name,
+      required this.gender,
+      required this.alignment})
       : super._();
 
   @override
@@ -142,10 +172,12 @@ class _$_Hero extends _Hero {
   final String name;
   @override
   final Gender gender;
+  @override
+  final HeroAlignment alignment;
 
   @override
   String toString() {
-    return 'HeroEntity(id: $id, name: $name, gender: $gender)';
+    return 'HeroEntity(id: $id, name: $name, gender: $gender, alignment: $alignment)';
   }
 
   @override
@@ -157,7 +189,10 @@ class _$_Hero extends _Hero {
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.gender, gender) ||
-                const DeepCollectionEquality().equals(other.gender, gender)));
+                const DeepCollectionEquality().equals(other.gender, gender)) &&
+            (identical(other.alignment, alignment) ||
+                const DeepCollectionEquality()
+                    .equals(other.alignment, alignment)));
   }
 
   @override
@@ -165,7 +200,8 @@ class _$_Hero extends _Hero {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(gender);
+      const DeepCollectionEquality().hash(gender) ^
+      const DeepCollectionEquality().hash(alignment);
 
   @JsonKey(ignore: true)
   @override
@@ -177,7 +213,8 @@ abstract class _Hero extends HeroEntity {
   const factory _Hero(
       {required int id,
       required String name,
-      required Gender gender}) = _$_Hero;
+      required Gender gender,
+      required HeroAlignment alignment}) = _$_Hero;
   const _Hero._() : super._();
 
   @override
@@ -186,6 +223,8 @@ abstract class _Hero extends HeroEntity {
   String get name => throw _privateConstructorUsedError;
   @override
   Gender get gender => throw _privateConstructorUsedError;
+  @override
+  HeroAlignment get alignment => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$HeroCopyWith<_Hero> get copyWith => throw _privateConstructorUsedError;
