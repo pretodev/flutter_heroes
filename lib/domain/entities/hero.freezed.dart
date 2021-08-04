@@ -16,10 +16,11 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$HeroEntityTearOff {
   const _$HeroEntityTearOff();
 
-  _Hero call({required int id, required String name}) {
+  _Hero call({required int id, required String name, required Gender gender}) {
     return _Hero(
       id: id,
       name: name,
+      gender: gender,
     );
   }
 }
@@ -31,6 +32,7 @@ const $HeroEntity = _$HeroEntityTearOff();
 mixin _$HeroEntity {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  Gender get gender => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HeroEntityCopyWith<HeroEntity> get copyWith =>
@@ -42,7 +44,9 @@ abstract class $HeroEntityCopyWith<$Res> {
   factory $HeroEntityCopyWith(
           HeroEntity value, $Res Function(HeroEntity) then) =
       _$HeroEntityCopyWithImpl<$Res>;
-  $Res call({int id, String name});
+  $Res call({int id, String name, Gender gender});
+
+  $GenderCopyWith<$Res> get gender;
 }
 
 /// @nodoc
@@ -57,6 +61,7 @@ class _$HeroEntityCopyWithImpl<$Res> implements $HeroEntityCopyWith<$Res> {
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
+    Object? gender = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -67,7 +72,18 @@ class _$HeroEntityCopyWithImpl<$Res> implements $HeroEntityCopyWith<$Res> {
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      gender: gender == freezed
+          ? _value.gender
+          : gender // ignore: cast_nullable_to_non_nullable
+              as Gender,
     ));
+  }
+
+  @override
+  $GenderCopyWith<$Res> get gender {
+    return $GenderCopyWith<$Res>(_value.gender, (value) {
+      return _then(_value.copyWith(gender: value));
+    });
   }
 }
 
@@ -76,7 +92,10 @@ abstract class _$HeroCopyWith<$Res> implements $HeroEntityCopyWith<$Res> {
   factory _$HeroCopyWith(_Hero value, $Res Function(_Hero) then) =
       __$HeroCopyWithImpl<$Res>;
   @override
-  $Res call({int id, String name});
+  $Res call({int id, String name, Gender gender});
+
+  @override
+  $GenderCopyWith<$Res> get gender;
 }
 
 /// @nodoc
@@ -92,6 +111,7 @@ class __$HeroCopyWithImpl<$Res> extends _$HeroEntityCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
+    Object? gender = freezed,
   }) {
     return _then(_Hero(
       id: id == freezed
@@ -102,6 +122,10 @@ class __$HeroCopyWithImpl<$Res> extends _$HeroEntityCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      gender: gender == freezed
+          ? _value.gender
+          : gender // ignore: cast_nullable_to_non_nullable
+              as Gender,
     ));
   }
 }
@@ -109,16 +133,19 @@ class __$HeroCopyWithImpl<$Res> extends _$HeroEntityCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Hero extends _Hero {
-  const _$_Hero({required this.id, required this.name}) : super._();
+  const _$_Hero({required this.id, required this.name, required this.gender})
+      : super._();
 
   @override
   final int id;
   @override
   final String name;
+  @override
+  final Gender gender;
 
   @override
   String toString() {
-    return 'HeroEntity(id: $id, name: $name)';
+    return 'HeroEntity(id: $id, name: $name, gender: $gender)';
   }
 
   @override
@@ -128,14 +155,17 @@ class _$_Hero extends _Hero {
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)));
+                const DeepCollectionEquality().equals(other.name, name)) &&
+            (identical(other.gender, gender) ||
+                const DeepCollectionEquality().equals(other.gender, gender)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(name);
+      const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(gender);
 
   @JsonKey(ignore: true)
   @override
@@ -144,13 +174,18 @@ class _$_Hero extends _Hero {
 }
 
 abstract class _Hero extends HeroEntity {
-  const factory _Hero({required int id, required String name}) = _$_Hero;
+  const factory _Hero(
+      {required int id,
+      required String name,
+      required Gender gender}) = _$_Hero;
   const _Hero._() : super._();
 
   @override
   int get id => throw _privateConstructorUsedError;
   @override
   String get name => throw _privateConstructorUsedError;
+  @override
+  Gender get gender => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$HeroCopyWith<_Hero> get copyWith => throw _privateConstructorUsedError;
