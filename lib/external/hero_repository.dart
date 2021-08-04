@@ -1,6 +1,7 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:heroes/domain/adapters/repositories/hero_repository_interface.dart';
 import 'package:heroes/domain/entities/hero.dart';
+import 'package:heroes/domain/usecases/get_heroes.dart';
 import 'package:heroes/external/api_provider/api_provider.dart';
 
 class HeroRepository extends HeroRepositoryInterface {
@@ -10,9 +11,14 @@ class HeroRepository extends HeroRepositoryInterface {
       : _apiProvider = apiProvider;
 
   @override
-  TaskEither<Exception, List<HeroEntity>> all() {
+  TaskEither<Exception, List<HeroEntity>> all([
+    GetHeroesOptions options = const GetHeroesOptions(),
+  ]) {
     return TaskEither(() async {
-      return Either.right(await _apiProvider.all);
+      var heroes = await _apiProvider.all;
+      if (options.gender != null)
+        heroes = heroes.where((hero) => hero.gender == options.gender).toList();
+      return Either.right(heroes);
     });
   }
 }
