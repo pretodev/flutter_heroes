@@ -18,6 +18,10 @@ class HeroRepository extends HeroRepositoryInterface {
       var heroes = await _apiProvider.all;
       if (options.gender != null)
         heroes = heroes.where((hero) => hero.gender == options.gender).toList();
+      if (options.alignment != null)
+        heroes = heroes
+            .where((hero) => hero.alignment == options.alignment)
+            .toList();
       return Either.right(heroes);
     });
   }

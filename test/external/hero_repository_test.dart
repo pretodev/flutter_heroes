@@ -86,5 +86,26 @@ void main() {
       List<HeroEntity> allHeroes = result.fold((_) => [], id);
       expect(allHeroes.length, 1);
     });
+
+    test('should return all good heroes', () async {
+      final options = GetHeroesOptions(alignment: HeroAlignment.good());
+      final result = await heroRepository.all(options).run();
+      List<HeroEntity> allHeroes = result.fold((_) => [], id);
+      expect(allHeroes.length, 1);
+    });
+
+    test('should return all bad heroes', () async {
+      final options = GetHeroesOptions(alignment: HeroAlignment.bad());
+      final result = await heroRepository.all(options).run();
+      List<HeroEntity> allHeroes = result.fold((_) => [], id);
+      expect(allHeroes.length, 3);
+    });
+
+    test('should return all neutral heroes', () async {
+      final options = GetHeroesOptions(alignment: HeroAlignment.neutral());
+      final result = await heroRepository.all(options).run();
+      List<HeroEntity> allHeroes = result.fold((_) => [], id);
+      expect(allHeroes.length, 2);
+    });
   });
 }
