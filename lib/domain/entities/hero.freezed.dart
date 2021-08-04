@@ -20,12 +20,14 @@ class _$HeroEntityTearOff {
       {required int id,
       required String name,
       required Gender gender,
-      required HeroAlignment alignment}) {
+      required HeroAlignment alignment,
+      required HeroAttributes attributes}) {
     return _Hero(
       id: id,
       name: name,
       gender: gender,
       alignment: alignment,
+      attributes: attributes,
     );
   }
 }
@@ -39,6 +41,7 @@ mixin _$HeroEntity {
   String get name => throw _privateConstructorUsedError;
   Gender get gender => throw _privateConstructorUsedError;
   HeroAlignment get alignment => throw _privateConstructorUsedError;
+  HeroAttributes get attributes => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HeroEntityCopyWith<HeroEntity> get copyWith =>
@@ -50,10 +53,16 @@ abstract class $HeroEntityCopyWith<$Res> {
   factory $HeroEntityCopyWith(
           HeroEntity value, $Res Function(HeroEntity) then) =
       _$HeroEntityCopyWithImpl<$Res>;
-  $Res call({int id, String name, Gender gender, HeroAlignment alignment});
+  $Res call(
+      {int id,
+      String name,
+      Gender gender,
+      HeroAlignment alignment,
+      HeroAttributes attributes});
 
   $GenderCopyWith<$Res> get gender;
   $HeroAlignmentCopyWith<$Res> get alignment;
+  $HeroAttributesCopyWith<$Res> get attributes;
 }
 
 /// @nodoc
@@ -70,6 +79,7 @@ class _$HeroEntityCopyWithImpl<$Res> implements $HeroEntityCopyWith<$Res> {
     Object? name = freezed,
     Object? gender = freezed,
     Object? alignment = freezed,
+    Object? attributes = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -88,6 +98,10 @@ class _$HeroEntityCopyWithImpl<$Res> implements $HeroEntityCopyWith<$Res> {
           ? _value.alignment
           : alignment // ignore: cast_nullable_to_non_nullable
               as HeroAlignment,
+      attributes: attributes == freezed
+          ? _value.attributes
+          : attributes // ignore: cast_nullable_to_non_nullable
+              as HeroAttributes,
     ));
   }
 
@@ -104,6 +118,13 @@ class _$HeroEntityCopyWithImpl<$Res> implements $HeroEntityCopyWith<$Res> {
       return _then(_value.copyWith(alignment: value));
     });
   }
+
+  @override
+  $HeroAttributesCopyWith<$Res> get attributes {
+    return $HeroAttributesCopyWith<$Res>(_value.attributes, (value) {
+      return _then(_value.copyWith(attributes: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -111,12 +132,19 @@ abstract class _$HeroCopyWith<$Res> implements $HeroEntityCopyWith<$Res> {
   factory _$HeroCopyWith(_Hero value, $Res Function(_Hero) then) =
       __$HeroCopyWithImpl<$Res>;
   @override
-  $Res call({int id, String name, Gender gender, HeroAlignment alignment});
+  $Res call(
+      {int id,
+      String name,
+      Gender gender,
+      HeroAlignment alignment,
+      HeroAttributes attributes});
 
   @override
   $GenderCopyWith<$Res> get gender;
   @override
   $HeroAlignmentCopyWith<$Res> get alignment;
+  @override
+  $HeroAttributesCopyWith<$Res> get attributes;
 }
 
 /// @nodoc
@@ -134,6 +162,7 @@ class __$HeroCopyWithImpl<$Res> extends _$HeroEntityCopyWithImpl<$Res>
     Object? name = freezed,
     Object? gender = freezed,
     Object? alignment = freezed,
+    Object? attributes = freezed,
   }) {
     return _then(_Hero(
       id: id == freezed
@@ -152,6 +181,10 @@ class __$HeroCopyWithImpl<$Res> extends _$HeroEntityCopyWithImpl<$Res>
           ? _value.alignment
           : alignment // ignore: cast_nullable_to_non_nullable
               as HeroAlignment,
+      attributes: attributes == freezed
+          ? _value.attributes
+          : attributes // ignore: cast_nullable_to_non_nullable
+              as HeroAttributes,
     ));
   }
 }
@@ -163,7 +196,8 @@ class _$_Hero extends _Hero {
       {required this.id,
       required this.name,
       required this.gender,
-      required this.alignment})
+      required this.alignment,
+      required this.attributes})
       : super._();
 
   @override
@@ -174,10 +208,12 @@ class _$_Hero extends _Hero {
   final Gender gender;
   @override
   final HeroAlignment alignment;
+  @override
+  final HeroAttributes attributes;
 
   @override
   String toString() {
-    return 'HeroEntity(id: $id, name: $name, gender: $gender, alignment: $alignment)';
+    return 'HeroEntity(id: $id, name: $name, gender: $gender, alignment: $alignment, attributes: $attributes)';
   }
 
   @override
@@ -192,7 +228,10 @@ class _$_Hero extends _Hero {
                 const DeepCollectionEquality().equals(other.gender, gender)) &&
             (identical(other.alignment, alignment) ||
                 const DeepCollectionEquality()
-                    .equals(other.alignment, alignment)));
+                    .equals(other.alignment, alignment)) &&
+            (identical(other.attributes, attributes) ||
+                const DeepCollectionEquality()
+                    .equals(other.attributes, attributes)));
   }
 
   @override
@@ -201,7 +240,8 @@ class _$_Hero extends _Hero {
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(gender) ^
-      const DeepCollectionEquality().hash(alignment);
+      const DeepCollectionEquality().hash(alignment) ^
+      const DeepCollectionEquality().hash(attributes);
 
   @JsonKey(ignore: true)
   @override
@@ -214,7 +254,8 @@ abstract class _Hero extends HeroEntity {
       {required int id,
       required String name,
       required Gender gender,
-      required HeroAlignment alignment}) = _$_Hero;
+      required HeroAlignment alignment,
+      required HeroAttributes attributes}) = _$_Hero;
   const _Hero._() : super._();
 
   @override
@@ -225,6 +266,8 @@ abstract class _Hero extends HeroEntity {
   Gender get gender => throw _privateConstructorUsedError;
   @override
   HeroAlignment get alignment => throw _privateConstructorUsedError;
+  @override
+  HeroAttributes get attributes => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$HeroCopyWith<_Hero> get copyWith => throw _privateConstructorUsedError;

@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:heroes/domain/entities/alignment.dart';
 import 'package:heroes/domain/entities/gender.dart';
 import 'package:heroes/domain/entities/hero.dart';
+import 'package:heroes/domain/entities/hero_attributes.dart';
 
 class ApiProvider {
   final Dio _client;
@@ -24,11 +25,21 @@ class ApiProvider {
             : alignmentMap == 'bad'
                 ? HeroAlignment.bad()
                 : HeroAlignment.neutral();
+        final attributesMap = map['powerstats'];
+        final attributes = HeroAttributes(
+          combat: attributesMap['combat'],
+          durability: attributesMap['durability'],
+          intelligence: attributesMap['intelligence'],
+          power: attributesMap['power'],
+          speed: attributesMap['speed'],
+          strength: attributesMap['strength'],
+        );
         return HeroEntity(
           id: map['id'],
           name: map['name'],
           gender: gender,
           alignment: alignment,
+          attributes: attributes,
         );
       },
     ).toList();
