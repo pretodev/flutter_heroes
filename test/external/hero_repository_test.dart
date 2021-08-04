@@ -114,5 +114,10 @@ void main() {
       List<HeroEntity> allHeroes = result.fold((_) => [], id);
       expect(allHeroes.length, 2);
     });
+
+    test('should return a random hero', () async {
+      final result = await heroRepository.random().run();
+      expect(result.fold(id, id), isA<HeroEntity>());
+    });
   });
 }

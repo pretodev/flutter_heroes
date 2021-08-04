@@ -8,4 +8,6 @@ abstract class HeroRepositoryInterface {
   TaskEither<Exception, List<HeroEntity>> all([
     GetHeroesOptions options = const GetHeroesOptions(),
   ]);
+
+  TaskEither<Exception, HeroEntity> random();
 }

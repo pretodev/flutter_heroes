@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:fpdart/fpdart.dart';
 import 'package:heroes/domain/adapters/repositories/hero_repository_interface.dart';
 import 'package:heroes/domain/entities/hero.dart';
@@ -7,8 +9,9 @@ import 'package:heroes/external/api_provider/api_provider.dart';
 class HeroRepository extends HeroRepositoryInterface {
   final ApiProvider _apiProvider;
 
-  const HeroRepository({required ApiProvider apiProvider})
-      : _apiProvider = apiProvider;
+  const HeroRepository({
+    required ApiProvider apiProvider,
+  }) : _apiProvider = apiProvider;
 
   @override
   TaskEither<Exception, List<HeroEntity>> all([
@@ -28,6 +31,15 @@ class HeroRepository extends HeroRepositoryInterface {
                 hero.name.toLowerCase().contains(options.query!.toLowerCase()))
             .toList();
       return Either.right(heroes);
+    });
+  }
+
+  @override
+  TaskEither<Exception, HeroEntity> random() {
+    return TaskEither(() async {
+      final heroes = await _apiProvider.all;
+      final randomIdx = Random().nextInt(heroes.length);
+      return Either.right(heroes[randomIdx]);
     });
   }
 }
