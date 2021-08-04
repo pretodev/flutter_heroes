@@ -22,6 +22,11 @@ class HeroRepository extends HeroRepositoryInterface {
         heroes = heroes
             .where((hero) => hero.alignment == options.alignment)
             .toList();
+      if (options.query != null)
+        heroes = heroes
+            .where((hero) =>
+                hero.name.toLowerCase().contains(options.query!.toLowerCase()))
+            .toList();
       return Either.right(heroes);
     });
   }

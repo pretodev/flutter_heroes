@@ -7,8 +7,9 @@ import 'package:heroes/domain/entities/hero.dart';
 class GetHeroesOptions {
   final Gender? gender;
   final HeroAlignment? alignment;
+  final String? query;
 
-  const GetHeroesOptions({this.gender, this.alignment});
+  const GetHeroesOptions({this.query, this.gender, this.alignment});
 }
 
 class GetHeroes {

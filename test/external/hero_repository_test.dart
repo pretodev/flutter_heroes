@@ -15,37 +15,37 @@ void main() {
     final heroes = <HeroEntity>[
       HeroEntity(
         id: 1,
-        name: 'hero1',
+        name: 'Laila',
         gender: Gender.female(),
         alignment: HeroAlignment.bad(),
       ),
       HeroEntity(
         id: 2,
-        name: 'hero2',
+        name: 'Ronald',
         gender: Gender.male(),
         alignment: HeroAlignment.neutral(),
       ),
       HeroEntity(
         id: 3,
-        name: 'hero3',
+        name: 'Ronaldo',
         gender: Gender.male(),
         alignment: HeroAlignment.bad(),
       ),
       HeroEntity(
         id: 4,
-        name: 'hero4',
+        name: 'Lucimar',
         gender: Gender.nonBinary(),
         alignment: HeroAlignment.good(),
       ),
       HeroEntity(
         id: 5,
-        name: 'hero5',
+        name: 'Lara',
         gender: Gender.female(),
         alignment: HeroAlignment.bad(),
       ),
       HeroEntity(
         id: 6,
-        name: 'hero6',
+        name: 'Veronica',
         gender: Gender.female(),
         alignment: HeroAlignment.neutral(),
       ),
@@ -103,6 +103,13 @@ void main() {
 
     test('should return all neutral heroes', () async {
       final options = GetHeroesOptions(alignment: HeroAlignment.neutral());
+      final result = await heroRepository.all(options).run();
+      List<HeroEntity> allHeroes = result.fold((_) => [], id);
+      expect(allHeroes.length, 2);
+    });
+
+    test('should return all heroes with name container "la"', () async {
+      final options = GetHeroesOptions(query: 'la');
       final result = await heroRepository.all(options).run();
       List<HeroEntity> allHeroes = result.fold((_) => [], id);
       expect(allHeroes.length, 2);
