@@ -19,12 +19,14 @@ class _$HeroEntityTearOff {
   _Hero call(
       {required int id,
       required String name,
+      required String photoUrl,
       required Gender gender,
       required HeroAlignment alignment,
       required HeroAttributes attributes}) {
     return _Hero(
       id: id,
       name: name,
+      photoUrl: photoUrl,
       gender: gender,
       alignment: alignment,
       attributes: attributes,
@@ -39,6 +41,7 @@ const $HeroEntity = _$HeroEntityTearOff();
 mixin _$HeroEntity {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  String get photoUrl => throw _privateConstructorUsedError;
   Gender get gender => throw _privateConstructorUsedError;
   HeroAlignment get alignment => throw _privateConstructorUsedError;
   HeroAttributes get attributes => throw _privateConstructorUsedError;
@@ -56,6 +59,7 @@ abstract class $HeroEntityCopyWith<$Res> {
   $Res call(
       {int id,
       String name,
+      String photoUrl,
       Gender gender,
       HeroAlignment alignment,
       HeroAttributes attributes});
@@ -77,6 +81,7 @@ class _$HeroEntityCopyWithImpl<$Res> implements $HeroEntityCopyWith<$Res> {
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
+    Object? photoUrl = freezed,
     Object? gender = freezed,
     Object? alignment = freezed,
     Object? attributes = freezed,
@@ -89,6 +94,10 @@ class _$HeroEntityCopyWithImpl<$Res> implements $HeroEntityCopyWith<$Res> {
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      photoUrl: photoUrl == freezed
+          ? _value.photoUrl
+          : photoUrl // ignore: cast_nullable_to_non_nullable
               as String,
       gender: gender == freezed
           ? _value.gender
@@ -135,6 +144,7 @@ abstract class _$HeroCopyWith<$Res> implements $HeroEntityCopyWith<$Res> {
   $Res call(
       {int id,
       String name,
+      String photoUrl,
       Gender gender,
       HeroAlignment alignment,
       HeroAttributes attributes});
@@ -160,6 +170,7 @@ class __$HeroCopyWithImpl<$Res> extends _$HeroEntityCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
+    Object? photoUrl = freezed,
     Object? gender = freezed,
     Object? alignment = freezed,
     Object? attributes = freezed,
@@ -172,6 +183,10 @@ class __$HeroCopyWithImpl<$Res> extends _$HeroEntityCopyWithImpl<$Res>
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      photoUrl: photoUrl == freezed
+          ? _value.photoUrl
+          : photoUrl // ignore: cast_nullable_to_non_nullable
               as String,
       gender: gender == freezed
           ? _value.gender
@@ -195,6 +210,7 @@ class _$_Hero extends _Hero {
   const _$_Hero(
       {required this.id,
       required this.name,
+      required this.photoUrl,
       required this.gender,
       required this.alignment,
       required this.attributes})
@@ -205,6 +221,8 @@ class _$_Hero extends _Hero {
   @override
   final String name;
   @override
+  final String photoUrl;
+  @override
   final Gender gender;
   @override
   final HeroAlignment alignment;
@@ -213,7 +231,7 @@ class _$_Hero extends _Hero {
 
   @override
   String toString() {
-    return 'HeroEntity(id: $id, name: $name, gender: $gender, alignment: $alignment, attributes: $attributes)';
+    return 'HeroEntity(id: $id, name: $name, photoUrl: $photoUrl, gender: $gender, alignment: $alignment, attributes: $attributes)';
   }
 
   @override
@@ -224,6 +242,9 @@ class _$_Hero extends _Hero {
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
+            (identical(other.photoUrl, photoUrl) ||
+                const DeepCollectionEquality()
+                    .equals(other.photoUrl, photoUrl)) &&
             (identical(other.gender, gender) ||
                 const DeepCollectionEquality().equals(other.gender, gender)) &&
             (identical(other.alignment, alignment) ||
@@ -239,6 +260,7 @@ class _$_Hero extends _Hero {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(photoUrl) ^
       const DeepCollectionEquality().hash(gender) ^
       const DeepCollectionEquality().hash(alignment) ^
       const DeepCollectionEquality().hash(attributes);
@@ -253,6 +275,7 @@ abstract class _Hero extends HeroEntity {
   const factory _Hero(
       {required int id,
       required String name,
+      required String photoUrl,
       required Gender gender,
       required HeroAlignment alignment,
       required HeroAttributes attributes}) = _$_Hero;
@@ -262,6 +285,8 @@ abstract class _Hero extends HeroEntity {
   int get id => throw _privateConstructorUsedError;
   @override
   String get name => throw _privateConstructorUsedError;
+  @override
+  String get photoUrl => throw _privateConstructorUsedError;
   @override
   Gender get gender => throw _privateConstructorUsedError;
   @override

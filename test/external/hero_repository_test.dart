@@ -3,6 +3,7 @@ import 'package:fpdart/fpdart.dart';
 import 'package:heroes/domain/entities/alignment.dart';
 import 'package:heroes/domain/entities/gender.dart';
 import 'package:heroes/domain/entities/hero.dart';
+import 'package:heroes/domain/entities/hero_attributes.dart';
 import 'package:heroes/domain/usecases/get_heroes.dart';
 import 'package:heroes/external/api_provider/api_provider.dart';
 import 'package:heroes/external/hero_repository.dart';
@@ -12,42 +13,63 @@ class MockApiProvider extends Mock implements ApiProvider {}
 
 void main() {
   group('Hero Repository', () {
+    final heroAttributes = HeroAttributes(
+      combat: 20,
+      durability: 20,
+      intelligence: 20,
+      power: 20,
+      speed: 20,
+      strength: 20,
+    );
+
     final heroes = <HeroEntity>[
       HeroEntity(
         id: 1,
         name: 'Laila',
+        photoUrl: '',
         gender: Gender.female(),
         alignment: HeroAlignment.bad(),
+        attributes: heroAttributes,
       ),
       HeroEntity(
         id: 2,
         name: 'Ronald',
+        photoUrl: '',
         gender: Gender.male(),
         alignment: HeroAlignment.neutral(),
+        attributes: heroAttributes,
       ),
       HeroEntity(
         id: 3,
         name: 'Ronaldo',
+        photoUrl: '',
         gender: Gender.male(),
         alignment: HeroAlignment.bad(),
+        attributes: heroAttributes,
       ),
       HeroEntity(
         id: 4,
         name: 'Lucimar',
+        photoUrl: '',
         gender: Gender.nonBinary(),
         alignment: HeroAlignment.good(),
+        attributes: heroAttributes,
       ),
       HeroEntity(
         id: 5,
         name: 'Lara',
+        photoUrl: '',
         gender: Gender.female(),
         alignment: HeroAlignment.bad(),
+        attributes: heroAttributes,
       ),
       HeroEntity(
         id: 6,
         name: 'Veronica',
+        photoUrl: '',
         gender: Gender.female(),
         alignment: HeroAlignment.neutral(),
+        attributes: heroAttributes,
       ),
     ];
 

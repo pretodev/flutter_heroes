@@ -37,6 +37,7 @@ class ApiProvider {
         return HeroEntity(
           id: map['id'],
           name: map['name'],
+          photoUrl: map['images']['lg'],
           gender: gender,
           alignment: alignment,
           attributes: attributes,

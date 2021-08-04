@@ -4,6 +4,7 @@ import 'package:heroes/domain/adapters/repositories/hero_repository_interface.da
 import 'package:heroes/domain/entities/alignment.dart';
 import 'package:heroes/domain/entities/gender.dart';
 import 'package:heroes/domain/entities/hero.dart';
+import 'package:heroes/domain/entities/hero_attributes.dart';
 import 'package:heroes/domain/usecases/get_random_hero.dart';
 import 'package:mocktail/mocktail.dart';
 
@@ -15,7 +16,16 @@ void main() {
       id: 2,
       name: 'Ronald',
       gender: Gender.male(),
+      photoUrl: '',
       alignment: HeroAlignment.neutral(),
+      attributes: HeroAttributes(
+        combat: 20,
+        durability: 20,
+        intelligence: 20,
+        power: 20,
+        speed: 20,
+        strength: 20,
+      ),
     );
 
     final heroRepository = MockHeroRepository();

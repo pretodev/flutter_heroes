@@ -12,6 +12,7 @@ class HeroEntity with _$HeroEntity {
   const factory HeroEntity({
     required int id,
     required String name,
+    required String photoUrl,
     required Gender gender,
     required HeroAlignment alignment,
     required HeroAttributes attributes,
