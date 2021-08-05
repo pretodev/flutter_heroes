@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 import 'package:heroes/domain/entities/alignment.dart';
 import 'package:heroes/domain/entities/gender.dart';
 import 'package:heroes/domain/usecases/get_heroes.dart';
@@ -31,6 +33,8 @@ class _FilterFormState extends State<FilterForm> {
     }
   }
 
+  bool isGenderSelected(int index) => _currentGender == parseGender(index);
+
   HeroAlignment? _currentAlignment;
 
   void setAligment(HeroAlignment? alignment) =>
@@ -48,6 +52,9 @@ class _FilterFormState extends State<FilterForm> {
         return HeroAlignment.bad();
     }
   }
+
+  bool isAlignmentSelected(int index) =>
+      _currentAlignment == parseAlignment(index);
 
   @override
   Widget build(BuildContext context) {
@@ -67,48 +74,41 @@ class _FilterFormState extends State<FilterForm> {
               ),
             ),
           ),
-          SizedBox(
-            height: 16.0,
-          ),
+          SizedBox(height: 16.0),
           Text('Gender'),
+          SizedBox(height: 8.0),
           ToggleButtons(
             children: [
-              Text('All'),
-              Text('Male'),
-              Text('Female'),
-              Text('Non-binary'),
+              ToggleButtonLabel('All', selected: isGenderSelected(0)),
+              ToggleButtonLabel('Male', selected: isGenderSelected(1)),
+              ToggleButtonLabel('Female', selected: isGenderSelected(2)),
+              ToggleButtonLabel('Non-binary', selected: isGenderSelected(3)),
             ],
             onPressed: (index) {
               final gender = parseGender(index);
               setGender(gender);
             },
-            isSelected: List.generate(
-              4,
-              (index) => _currentGender == parseGender(index),
-            ),
+            isSelected: List.generate(4, isGenderSelected),
           ),
-          SizedBox(
-            height: 16.0,
-          ),
+          SizedBox(height: 16.0),
           Text('Alignment'),
+          SizedBox(height: 8.0),
           ToggleButtons(
             children: [
-              Text('All'),
-              Text('Good'),
-              Text('Neutral'),
-              Text('Bad'),
+              ToggleButtonLabel('All', selected: isAlignmentSelected(0)),
+              ToggleButtonLabel('Good', selected: isAlignmentSelected(1)),
+              ToggleButtonLabel('Neutral', selected: isAlignmentSelected(2)),
+              ToggleButtonLabel('Bad', selected: isAlignmentSelected(3)),
             ],
             onPressed: (index) {
               final aligment = parseAlignment(index);
               setAligment(aligment);
             },
-            isSelected: List.generate(
-              4,
-              (index) => _currentAlignment == parseAlignment(index),
-            ),
+            isSelected: List.generate(4, isAlignmentSelected),
           ),
+          SizedBox(height: 16.0),
           ElevatedButton(
-            child: Text('Filter'),
+            child: Text('Ready'),
             onPressed: () {
               Navigator.of(context).pop(
                 GetHeroesOptions(
@@ -120,6 +120,31 @@ class _FilterFormState extends State<FilterForm> {
             },
           ),
         ],
+      ),
+    );
+  }
+}
+
+class ToggleButtonLabel extends StatelessWidget {
+  const ToggleButtonLabel(
+    this.text, {
+    Key? key,
+    this.selected = false,
+  }) : super(key: key);
+
+  final String text;
+  final bool selected;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: (MediaQuery.of(context).size.width - 48) / 4,
+      alignment: Alignment.center,
+      child: Text(
+        text,
+        style: GoogleFonts.rubik(
+          color: selected ? Colors.white : AppColors.primary,
+        ),
       ),
     );
   }
