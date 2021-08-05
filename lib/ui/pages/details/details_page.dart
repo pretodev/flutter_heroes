@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:heroes/domain/entities/hero.dart';
-import 'package:heroes/ui/pages/home/components/hero_attributes_view.dart';
+import 'package:heroes/ui/components/hero_attributes_view.dart';
 
 class DetailsPage extends StatelessWidget {
   static MaterialPageRoute route(HeroEntity hero) =>

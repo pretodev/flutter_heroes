@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:heroes/domain/entities/hero.dart';
 import 'package:heroes/ui/pages/details/details_page.dart';
-import 'package:heroes/ui/pages/home/components/hero_attributes_view.dart';
+import 'package:heroes/ui/components/hero_attributes_view.dart';
 import 'package:heroes/ui/theme/theme.dart';
 
 class HeroCard extends StatelessWidget {
