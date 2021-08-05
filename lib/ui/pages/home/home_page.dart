@@ -6,6 +6,7 @@ import 'package:heroes/locator.dart';
 import 'package:heroes/ui/pages/home/components/filter_form.dart';
 import 'package:heroes/ui/pages/home/components/hero_card.dart';
 import 'package:heroes/ui/pages/home/stores/heroes_store.dart';
+import 'package:heroes/ui/theme/theme.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -59,8 +60,12 @@ class _HomePageState extends State<HomePage> {
       ),
       body: ScopedBuilder<HeroesStore, Exception, List<HeroEntity>>(
         store: heroesStore,
-        onLoading: (_) => CircularProgressIndicator(),
-        onError: (_, error) => Text('$error'),
+        onLoading: (_) => Center(
+          child: CircularProgressIndicator(
+            color: AppColors.primary,
+          ),
+        ),
+        onError: (_, error) => Center(child: Text('$error')),
         onState: (_, heroes) => ListView.builder(
           itemCount: heroes.length,
           padding: const EdgeInsets.all(16.0),
