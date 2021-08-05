@@ -1,4 +1,5 @@
 import 'package:fpdart/fpdart.dart';
+
 import 'package:heroes/domain/adapters/repositories/hero_repository_interface.dart';
 import 'package:heroes/domain/entities/alignment.dart';
 import 'package:heroes/domain/entities/gender.dart';
@@ -10,6 +11,10 @@ class GetHeroesOptions {
   final String? query;
 
   const GetHeroesOptions({this.query, this.gender, this.alignment});
+
+  @override
+  String toString() =>
+      'GetHeroesOptions(gender: $gender, alignment: $alignment, query: $query)';
 }
 
 class GetHeroes {

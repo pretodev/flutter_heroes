@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_triple/flutter_triple.dart';
 import 'package:heroes/domain/entities/hero.dart';
+import 'package:heroes/domain/usecases/get_heroes.dart';
 import 'package:heroes/locator.dart';
+import 'package:heroes/ui/pages/home/components/filter_form.dart';
 import 'package:heroes/ui/pages/home/components/hero_card.dart';
 import 'package:heroes/ui/pages/home/stores/heroes_store.dart';
-import 'package:heroes/ui/theme/theme.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -34,6 +35,9 @@ class _HomePageState extends State<HomePage> {
                 height: 24,
                 width: 24,
               ),
+              style: ElevatedButton.styleFrom(
+                shape: CircleBorder(),
+              ),
               onPressed: () {},
             ),
           ),
@@ -45,7 +49,10 @@ class _HomePageState extends State<HomePage> {
                 height: 24,
                 width: 24,
               ),
-              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                shape: CircleBorder(),
+              ),
+              onPressed: showFilters,
             ),
           ),
         ],
@@ -64,5 +71,15 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+
+  void showFilters() async {
+    final options = await showModalBottomSheet<GetHeroesOptions>(
+      context: context,
+      builder: (_) => FilterForm(),
+    );
+    if (options != null) {
+      heroesStore.loadHeroes(options);
+    }
   }
 }

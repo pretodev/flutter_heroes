@@ -9,9 +9,9 @@ class HeroesStore extends StreamStore<Exception, List<HeroEntity>> {
 
   final GetHeroes _getHeroes;
 
-  void loadHeroes() async {
+  void loadHeroes([GetHeroesOptions options = const GetHeroesOptions()]) async {
     setLoading(true);
-    final result = await _getHeroes().run();
+    final result = await _getHeroes(options).run();
     result.fold(setError, update);
     setLoading(false);
   }
