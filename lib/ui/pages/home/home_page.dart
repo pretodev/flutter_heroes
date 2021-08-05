@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_triple/flutter_triple.dart';
 import 'package:heroes/domain/entities/hero.dart';
 import 'package:heroes/domain/usecases/get_heroes.dart';
+import 'package:heroes/domain/usecases/get_random_hero.dart';
 import 'package:heroes/locator.dart';
+import 'package:heroes/ui/pages/details/details_page.dart';
 import 'package:heroes/ui/pages/home/components/filter_form.dart';
 import 'package:heroes/ui/pages/home/components/hero_card.dart';
 import 'package:heroes/ui/pages/home/stores/heroes_store.dart';
@@ -15,6 +17,27 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final heroesStore = locator<HeroesStore>();
+  final getRandomHero = locator<GetRandomHero>();
+
+  void showFilters() async {
+    final options = await showModalBottomSheet<GetHeroesOptions>(
+      context: context,
+      builder: (_) => FilterForm(),
+    );
+    if (options != null) {
+      heroesStore.loadHeroes(options);
+    }
+  }
+
+  void showRandomHero() async {
+    final result = await getRandomHero().run();
+    result.fold(
+      (error) => {
+        // TODO: tratar este erro
+      },
+      (hero) => Navigator.push(context, DetailsPage.route(hero)),
+    );
+  }
 
   @override
   void initState() {
@@ -39,7 +62,7 @@ class _HomePageState extends State<HomePage> {
               style: ElevatedButton.styleFrom(
                 shape: CircleBorder(),
               ),
-              onPressed: () {},
+              onPressed: showRandomHero,
             ),
           ),
           Padding(
@@ -76,15 +99,5 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
-  }
-
-  void showFilters() async {
-    final options = await showModalBottomSheet<GetHeroesOptions>(
-      context: context,
-      builder: (_) => FilterForm(),
-    );
-    if (options != null) {
-      heroesStore.loadHeroes(options);
-    }
   }
 }
