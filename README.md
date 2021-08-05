@@ -1,16 +1,20 @@
-# heroes
+# Heroes
 
-A new Flutter project.
+Este um aplicativo de exemplo que mostra informações de diversos personagens do universo dos quadrinhos. A informações são recuperadas de uma REST API.
 
-## Getting Started
+## Escopo do Projeto
+- Listar herois
+- Visualizar heroi
+- Visualizar heroi aleatório
+- Buscar herois por texto
+- Buscar herois por gênero
+- Buscar herois por alinhamento
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Packages
+- fpdart
+- dio
+- get_it
+- flutter_triple
+- google_fonts
+- freezed
+- mocktail
